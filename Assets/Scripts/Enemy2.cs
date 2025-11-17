@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy2 : MonoBehaviour
 {
+    public KillCounter KillCounter;
     private Vector3 direction;
 
     // Start is called before the first frame update
@@ -23,6 +24,19 @@ public class Enemy2 : MonoBehaviour
         transform.Translate(direction * Time.deltaTime * 3f);
         if (transform.position.y < -6.5f || transform.position.x<-9.5f || transform.position.x> 9.5f)
         {
+            Destroy(this.gameObject);
+        }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            if (KillCounter.Instance != null)
+            {
+                KillCounter.Instance.AddKill(1);
+            }
+
+            Destroy(collision.gameObject);
             Destroy(this.gameObject);
         }
     }

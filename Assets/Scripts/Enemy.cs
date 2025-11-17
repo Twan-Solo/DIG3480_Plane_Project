@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
+    public KillCounter KillCounter;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,20 @@ public class Enemy : MonoBehaviour
         transform.Translate(new Vector3(0, -1, 0) * Time.deltaTime * 3f);
         if (transform.position.y < -6.5f)
         {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            if (KillCounter.Instance != null)
+            {
+                KillCounter.Instance.AddKill(1);
+            }
+          
+            Destroy(collision.gameObject);
             Destroy(this.gameObject);
         }
     }
