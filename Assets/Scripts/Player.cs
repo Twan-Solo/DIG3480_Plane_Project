@@ -21,11 +21,18 @@ public class Player : MonoBehaviour
     public GameObject bulletPrefabTwo;
     public GameObject PlayerPrefab;
 
+    private bool isShielded = false;
+    
+
+    public AudioClip shieldStartSound; 
+    public AudioClip shieldEndSound;
+
     void Start()
     {
         playerSpeed = 6f;
         //This function is called at the start of the game
         
+
     }
 
     void Update()
@@ -35,6 +42,30 @@ public class Player : MonoBehaviour
         Shooting();
         ShootingTwo();
       
+    }
+
+    public void ActivateShield(float duration)
+    {
+        if (isShielded) return;
+
+        StartCoroutine(ShieldRoutine(duration));
+    }
+
+    private IEnumerator ShieldRoutine(float duration)
+    {
+        isShielded = true;
+
+        // Play start sound
+        if (shieldStartSound != null)
+            AudioSource.PlayClipAtPoint(shieldStartSound, transform.position);
+
+        yield return new WaitForSeconds(duration);
+
+        isShielded = false;
+
+        if (shieldEndSound != null)
+            AudioSource.PlayClipAtPoint(shieldEndSound, transform.position);
+
     }
 
     void Shooting()

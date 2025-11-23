@@ -6,6 +6,7 @@ public class HealthCounter : MonoBehaviour
 {
     public static HealthCounter Instance;
     private int health = 0;
+    public int CurrentHealth => health;
 
     public TextMeshProUGUI HealthText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

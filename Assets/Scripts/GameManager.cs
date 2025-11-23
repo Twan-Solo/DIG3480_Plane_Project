@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public GameObject PlayerPrefab;
     public GameObject CoinPrefab;
     public GameObject HealthPrefab;
+    public GameObject ShieldPrefab;
+    private float horizontalScreenLimit = 9.5f;
+    private float verticalScreenLimit = 6.5f;
 
 
     // Start is called before the first frame update
@@ -19,6 +22,7 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreateEnemyTwo", 2, 4);
         InvokeRepeating("SpawnCoin", 3, 6);
         InvokeRepeating("SpawnHealth", 3, 6);
+        InvokeRepeating("SpawnShield", 3, 6);
 
     }
     
@@ -40,11 +44,19 @@ public class GameManager : MonoBehaviour
     }
     void SpawnCoin()
     {
-        Instantiate(CoinPrefab, new Vector3(Random.Range(-9f, 9f), Random.Range(-4f, 4f), 0), Quaternion.identity);
+        Instantiate(CoinPrefab, new Vector3(Random.Range(-horizontalScreenLimit, horizontalScreenLimit), Random.Range(-verticalScreenLimit / 2f, verticalScreenLimit / 4f), 0), Quaternion.identity);
     }
     void SpawnHealth()
     {
-        Instantiate(HealthPrefab, new Vector3(Random.Range(-9f, 9f), Random.Range(-4f, 4f), 0), Quaternion.identity);
+        if (HealthCounter.Instance != null && HealthCounter.Instance.CurrentHealth < 3)
+        {
+            Instantiate(HealthPrefab, new Vector3(Random.Range(-horizontalScreenLimit, horizontalScreenLimit), Random.Range(-verticalScreenLimit / 2f, verticalScreenLimit / 4f), 0), Quaternion.identity);
+        }
+    }
+
+    void SpawnShield()
+    {
+        Instantiate(ShieldPrefab, new Vector3(Random.Range(-horizontalScreenLimit, horizontalScreenLimit), Random.Range(-verticalScreenLimit / 2f, verticalScreenLimit / 4f), 0), Quaternion.identity);
     }
 
 }

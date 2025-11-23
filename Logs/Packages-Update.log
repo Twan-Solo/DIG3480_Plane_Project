@@ -58,3 +58,23 @@ The following packages were updated:
   com.unity.visualscripting from version 1.9.4 to 1.9.7
 The following packages were removed:
   com.unity.textmeshpro@3.0.7
+
+=== Sun Nov 16 20:34:42 2025
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.shadergraph from version 14.0.8 to 17.2.0
+  com.unity.render-pipelines.universal from version 14.0.8 to 17.2.0
+  com.unity.visualeffectgraph from version 14.0.8 to 17.2.0
+
+=== Sun Nov 16 20:34:43 2025
+
+Packages were changed.
+Update Mode: mergeDefaultDependencies
+
+The following packages were added:
+  com.unity.render-pipelines.universal@17.2.0
+  com.unity.shadergraph@17.2.0
+  com.unity.visualeffectgraph@17.2.0
