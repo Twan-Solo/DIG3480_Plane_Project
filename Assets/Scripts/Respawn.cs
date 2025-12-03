@@ -3,7 +3,7 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
     public GameObject PlayerPrefab;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called before the first frame update
     void Start()
     {
         
