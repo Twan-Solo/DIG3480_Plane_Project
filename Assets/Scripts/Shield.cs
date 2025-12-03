@@ -6,7 +6,7 @@ public class Shield : MonoBehaviour
     public AudioClip powerUpSound;
     public AudioClip powerDownSound;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called before the first frame update
     void Start()
     {
         Destroy(gameObject, lifetime);
