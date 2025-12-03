@@ -4,7 +4,7 @@ public class Health : MonoBehaviour
 {
     public float lifetime = 5f;  // Health destroys itself after 5 seconds
     public int healthValue = 1;   // Score added when player collects
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called before the first frame update
     void Start()
     {
         Destroy(gameObject, lifetime);
